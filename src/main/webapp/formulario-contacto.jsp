@@ -10,24 +10,12 @@
     <h1>${empty contacto ? 'Crear Nuevo Contacto' : 'Editar Contacto'}</h1>
     <hr>
 
-    <%-- 
-        El 'action' del formulario siempre apunta al servlet.
-        Usamos el método POST para enviar datos.
-    --%>
     <form method="post" action="<c:url value='/contactos'/>">
 
-        <%-- 
-            Este campo oculto le dice al servlet si la acción es 'guardar' (para nuevos)
-            o 'actualizar' (para existentes).
-        --%>
         <input type="hidden" name="action" value="${empty contacto ? 'guardar' : 'actualizar'}">
 
         <div>
             <label>Clave:</label>
-            <%-- 
-                Si estamos editando (contacto no está vacío), la clave no se puede modificar (readonly).
-                Si estamos creando uno nuevo, el campo está habilitado.
-            --%>
             <input type="text" name="clave" value="<c:out value='${contacto.clave}'/>" ${empty contacto ? '' : 'readonly'}>
         </div>
         <br>
